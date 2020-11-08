@@ -5,6 +5,7 @@
 #include<stdlib.h>
 #include <time.h>
 
+int cash = 100;
 void Play(int bet) {
     char c1[3] = { 'J','Q','K' };
     printf("Shuffling...\n");
@@ -19,20 +20,20 @@ void Play(int bet) {
         c1[y] = temp; //swap characters at position x and y
     }
     int playersGuess;
-    printf("What's the positon of the Queen -1, 2 or 3?");
-    scanf("%d", &playersGuess);
-    if (c1[playersGuess-1]='Q')//because the array starts with 0
+    printf("What's the positon of the Queen 1, 2 or 3?");
+    scanf_s("%d", &playersGuess);
+    if (c1[playersGuess-1]=='Q')//because the array starts with 0
     {
         cash += 3 * bet;
-        printf("You Win ! Result = %c%c%c Total cash = %d", c1[0], c1[1], c1[2], cash);
+        printf("You Win ! Result = \"%c %c %c\" Total cash = %d\n", c1[0], c1[1], c1[2], cash);
     }
     else
     {
         cash -= bet;
-        printf("You Loose ! Result = %c%c%c Total cash = %d", c1[0], c1[1], c1[2], cash);
+        printf("You Loose ! Result = \"%c %c %c\" Total cash = %d\n", c1[0], c1[1], c1[2], cash);
     }
 }
-int cash = 100;
+
 
 int main()
 {
@@ -42,7 +43,7 @@ int main()
     while (cash >0)
     {
         printf("What is your bet? $");
-        scanf("%d", &bet);
+        scanf_s("%d", &bet);
         if (bet == 0 || bet > cash) break;
         Play(bet);
     }
