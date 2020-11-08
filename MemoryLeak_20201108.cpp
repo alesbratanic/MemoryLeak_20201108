@@ -7,8 +7,9 @@
 
 int cash = 100;
 void Play(int bet) {
-    char c1[3] = { 'J','Q','K' };
-    //printf("Shuffling...\n");
+    char *c1 = new char[3];
+    c1[0] = 'J'; c1[1] = 'Q';c1[2] = 'K';
+    printf("Shuffling...\n");
     srand(time(NULL)); //seeding  random number generator
     int i;
     for ( i = 0; i < 5; i++)
@@ -32,6 +33,7 @@ void Play(int bet) {
         cash -= bet;
         printf("You Loose ! Result = \"%c %c %c\" Total cash = %d\n", c1[0], c1[1], c1[2], cash);
     }
+    delete[] c1;
 }
 
 
